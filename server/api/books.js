@@ -1,5 +1,6 @@
 
-export default function (server, mongoose) {
+
+export default function (server, mongoose) {  
   const bookSchema = new mongoose.Schema({
     title: String,
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
@@ -12,7 +13,7 @@ export default function (server, mongoose) {
   const Book = mongoose.model('Book', bookSchema);
 
   // Express route för att hämta böcker med författare
-  server.get('/api/books', async (req, res) => {
+  server.get('/api/books/all', async (req, res) => {
     try {
       const books = await Book.find().populate("author");
       res.status(200).json(books);
@@ -77,5 +78,60 @@ export default function (server, mongoose) {
       console.error(error);
       res.status(500).json({ message: "Ett fel uppstod på servern vid radering av bok." });
     }
-  })
+  });
+
+  // Definiera en GET-rutt för att söka efter böcker baserat på titel
+  server.get('/api/books', async (req, res) => {
+    const title = req.query.title; // Hämta titeln från URL-parametern
+
+    // Logga den mottagna titeln för felsökning
+    console.log('Mottagen titel:', title);
+
+    // Filtrera böcker baserat på titeln - kontroll av upper/lower med RegExp
+   
+    const filteredBooks = await Book.find({ title: { $regex: new RegExp(title, "i") } });
+    res.json(filteredBooks); // Returnera filtrerade böcker som JSON
+  }); 
+
+  //Pagination via GET
+  server.get("/api/bookslimit", async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1; // aktuell sida
+      const limit = parseInt(req.query.limit) || 10; // antal elementer på en sida
+      const sortField = req.query.sortField || "_id"; // fälten för sortering
+      const sortOrder = req.query.sortOrder || "asc"; // sorteringsriktning
+
+      const sortOptions = {};
+      sortOptions[sortField] = sortOrder === "asc" ? 1 : -1;
+
+      const totalBooks = await Book.countDocuments();
+      const totalPages = Math.ceil(totalBooks / limit);
+      const skip = (page - 1) * limit;
+
+      const books = await Book.find()
+        .sort(sortOptions)
+        .skip(skip)
+        .limit(limit);
+
+      res.status(200).json({
+        books,
+        currentPage: page,
+        totalPages,
+        totalBooks
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Ett fel inträffade", error });
+    }
+  });
+
+  server.get('/api/load-test', async (req, res) => {
+    try {
+      const books = await Book.find().populate("author");
+      res.status(200).json(books);
+    } catch (error) {
+      res.status(500).json({ message: "Ett fel inträffade", error });
+    }
+  });
+
 };
