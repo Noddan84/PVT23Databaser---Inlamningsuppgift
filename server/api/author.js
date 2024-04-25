@@ -1,12 +1,10 @@
+
+import Author from "../model/author1.js";
+
 export default function (server, mongoose) {
-  const authorSchema = new mongoose.Schema({
-    fullName: String,
-    books: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' }
-  });
+ 
 
-  const Author = mongoose.model('Author', authorSchema);
-
-  // Express route för att hämta författare
+  // GET route för att hämta författare
   server.get('/api/authors', async (req, res) => {
     try {
       const authors = await Author.find().populate("books");
@@ -69,4 +67,15 @@ export default function (server, mongoose) {
       res.status(500).json({ message: "Ett fel uppstod på servern vid radering av författare." });
     }
   });
+
+  //Belastningstest via GET
+  server.get('/api/load-test2', async (req, res) => {
+    try {
+      const authors = await Author.find().populate("books");
+      res.status(200).json(authors);
+    } catch (error) {
+      res.status(500).json({ message: "Ett fel inträffade", error });
+    }
+  });
+
 };

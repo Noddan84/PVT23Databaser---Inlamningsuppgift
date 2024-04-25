@@ -1,16 +1,7 @@
-
+import Book from "../model/books1.js";
 
 export default function (server, mongoose) {  
-  const bookSchema = new mongoose.Schema({
-    title: String,
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
-    genre: String,
-    releaseDate: Date,
-    isbnCode: String,
-    description: String
-  });
-
-  const Book = mongoose.model('Book', bookSchema);
+  
 
   // Express route för att hämta böcker med författare
   server.get('/api/books/all', async (req, res) => {
@@ -39,7 +30,6 @@ export default function (server, mongoose) {
   server.post('/api/books', async (req, res) => {
     try {
       const { title, author, genre, releaseDate, isbnCode, description } = req.body;
-
       // Skapa en ny bok
       const newBook = new Book({ title, author, genre, releaseDate, isbnCode, description });
       const savedBook = await newBook.save();
@@ -71,7 +61,7 @@ export default function (server, mongoose) {
       if (!deletedBook) {
         return res.status(404).json({ message: "Boken hittades inte" });
       }
-      // Nu använder vi populate för att fylla på författarens information i den raderade boken
+      
       await deletedBook.populate('author').execPopulate();
       res.json({ message: "Boken har raderats!", deletedBook });
     } catch (error) {
@@ -82,37 +72,27 @@ export default function (server, mongoose) {
 
   // Definiera en GET-rutt för att söka efter böcker baserat på titel
   server.get('/api/books', async (req, res) => {
-    const title = req.query.title; // Hämta titeln från URL-parametern
-
-    // Logga den mottagna titeln för felsökning
-    console.log('Mottagen titel:', title);
-
-    // Filtrera böcker baserat på titeln - kontroll av upper/lower med RegExp
-   
+    const title = req.query.title;   
     const filteredBooks = await Book.find({ title: { $regex: new RegExp(title, "i") } });
-    res.json(filteredBooks); // Returnera filtrerade böcker som JSON
+    res.json(filteredBooks); 
   }); 
 
   //Pagination via GET
   server.get("/api/bookslimit", async (req, res) => {
     try {
-      const page = parseInt(req.query.page) || 1; // aktuell sida
-      const limit = parseInt(req.query.limit) || 10; // antal elementer på en sida
-      const sortField = req.query.sortField || "_id"; // fälten för sortering
-      const sortOrder = req.query.sortOrder || "asc"; // sorteringsriktning
-
+      const page = parseInt(req.query.page) || 1; 
+      const limit = parseInt(req.query.limit) || 10;
+      const sortField = req.query.sortField || "_id";
+      const sortOrder = req.query.sortOrder || "asc";
       const sortOptions = {};
       sortOptions[sortField] = sortOrder === "asc" ? 1 : -1;
-
       const totalBooks = await Book.countDocuments();
       const totalPages = Math.ceil(totalBooks / limit);
       const skip = (page - 1) * limit;
-
       const books = await Book.find()
         .sort(sortOptions)
         .skip(skip)
         .limit(limit);
-
       res.status(200).json({
         books,
         currentPage: page,
@@ -125,6 +105,7 @@ export default function (server, mongoose) {
     }
   });
 
+  //Belastningstest via GET
   server.get('/api/load-test', async (req, res) => {
     try {
       const books = await Book.find().populate("author");
@@ -133,5 +114,4 @@ export default function (server, mongoose) {
       res.status(500).json({ message: "Ett fel inträffade", error });
     }
   });
-
 };
