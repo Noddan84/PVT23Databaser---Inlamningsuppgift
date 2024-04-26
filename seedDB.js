@@ -9,8 +9,8 @@ async function seedDB() {
   try {
     await mongoose.connect("mongodb+srv://csnoddan:kim123@cluster0.nw3iadb.mongodb.net/test")
     console.log(".: Connected! :.")
-    const authorList = await createAuthors(100)
-    const bookList = await createBooks(100, authorList)
+    const authorList = await createAuthors(5)
+    const bookList = await createBooks(5, authorList)
     console.log("AuthorList - ", authorList)
     console.log("BookList - ", bookList)
   } catch (error) {

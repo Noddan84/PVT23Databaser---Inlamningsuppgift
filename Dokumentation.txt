@@ -4,7 +4,7 @@
 
 ÖVERSIKT
 
-Detta API tillhandahåller metoder för att hantera böcker och deras relaterade information.
+Detta API tillhandahåller metoder för att hantera böcker/författare och deras relaterade information.
 
 AUTENTISERING
 
