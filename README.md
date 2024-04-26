@@ -1,3 +1,5 @@
+OBS! Info till Linus --> Jag satsar på VG
+
 Every information about this BookFinder API will be located on my Github account.
 
 Start by downloading the repository from my Github account.
@@ -18,5 +20,6 @@ where ****** is my password.
 When you are ready to start, please run node server.js in terminal.
 
 To seed the database with dummydata please run node seedDB.js in terminal.
+Also here you need to enter your own connection string.
 
 Link to my Postman workspace – https://www.postman.com/noddan84/workspace/pvt23kimnordin
