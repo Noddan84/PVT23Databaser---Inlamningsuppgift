@@ -45,32 +45,35 @@ If not - add it.
 }
 ```
 
-## Install Express and Mongoose in Visual Studio Code by running
+## Install Express and Mongoose in Visual Studio Code
+### - run
 ```
 npm i express mongoose
 ```
-in terminal.
+### in terminal.
 
 ## Open the ”server.js” file and enter your own connection string values (username and password) to the MongoDB database.
 ### For example, my connection-string looks like this:
 ```
 mongoose.connect("mongodb+srv://csnoddan:******@cluster0.nw3iadb.mongodb.net/test")
 ```
-where ****** is my password.
+### where ****** is my password.
 
 
-## When you are ready to start, please run
+## Start server connection
+### When you are ready to start, please run
 ```
 node server.js
 ```
-in terminal.
+### in terminal.
 
 
-## To seed the database with dummydata please run
+## Seed database
+### To seed the database with dummydata please run
 ```
 node seedDB.js
 ```
-## in terminal.
+### in terminal.
 ### Also here you need to enter your own connection string.
 
 
