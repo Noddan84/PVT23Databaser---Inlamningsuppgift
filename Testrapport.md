@@ -103,7 +103,7 @@ Manuellt belastningstest för att utvärdera prestanda
 med flera samtidiga förfrågningar.
 Antalet iterationer och fördefinierad gräns kan
 ändras efter eget tycke.
-### Obs!
+- OBS!
 Resultatet kan variera beroende på datorns prestanda, uppkoppling
 och om du har flera program igång samtidigt samt om
 datatrafiken är hög.

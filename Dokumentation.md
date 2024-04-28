@@ -1,18 +1,18 @@
------------------------
-.: API-DOKUMENTATION :.
------------------------
+# -----------------------
+# .: API-DOKUMENTATION :.
+# -----------------------
 
-ÖVERSIKT
+## ÖVERSIKT
 
-Detta API tillhandahåller metoder för att hantera böcker/författare och deras relaterade information.
+- Detta API tillhandahåller metoder för att hantera böcker/författare och deras relaterade information.
 
-AUTENTISERING
+## AUTENTISERING
 
-API:et kräver ingen autentisering för att använda sig av offentliga resurser.
+- API:et kräver ingen autentisering för att använda sig av offentliga resurser.
 
-SLUTPUNKTER (ENDPOINTS)
+## SLUTPUNKTER (ENDPOINTS)
 
-HÄMTA ALLA BÖCKER
+### HÄMTA ALLA BÖCKER
 
  URL: /api/books/all
  Metod: GET
@@ -22,7 +22,7 @@ HÄMTA ALLA BÖCKER
  200: Lyckad begäran. Returnerar en lista med alla böcker.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-HÄMTA EN SPECIFIK BOK BASERAT PÅ ID
+### HÄMTA EN SPECIFIK BOK BASERAT PÅ ID
 
  URL: /api/books/:id
  Metod: GET
@@ -34,7 +34,7 @@ HÄMTA EN SPECIFIK BOK BASERAT PÅ ID
  404: Boken hittades inte.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-SKAPA EN NY BOK
+### SKAPA EN NY BOK
 
  URL: /api/books
  Metod: POST
@@ -50,7 +50,7 @@ SKAPA EN NY BOK
  201: Boken har skapats framgångsrikt.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-UPPDATERA EN BEFINTLIG BOK
+### UPPDATERA EN BEFINTLIG BOK
 
  URL: /api/books/:id
  Metod: PUT
@@ -62,7 +62,7 @@ UPPDATERA EN BEFINTLIG BOK
  404: Boken hittades inte.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-TA BORT EN BOK
+### TA BORT EN BOK
 
  URL: /api/books/:id
  Metod: DELETE
@@ -74,7 +74,7 @@ TA BORT EN BOK
  404: Boken hittades inte.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-SÖK EFTER BÖCKER MED TITEL
+### SÖK EFTER BÖCKER MED TITEL
 
  URL: /api/books
  Metod: GET
@@ -85,7 +85,7 @@ SÖK EFTER BÖCKER MED TITEL
  200: Lyckad begäran. Returnerar en lista med böcker som matchar titeln.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-PAGINERING AV BÖCKER
+### PAGINERING AV BÖCKER
 
  URL: /api/bookslimit
  Metod: GET
@@ -99,7 +99,7 @@ PAGINERING AV BÖCKER
  200: Lyckad begäran. Returnerar en lista med böcker enligt specificerade parametrar.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-BELASTNINGSTEST
+### BELASTNINGSTEST
 
  URL: /api/load-test
  Metod: GET
@@ -108,13 +108,11 @@ BELASTNINGSTEST
  200: Lyckad begäran. Returnerar en lista med alla böcker.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-----------------------------------------------
-::::::::::::::::::::::::::::::::::::::::::::::
-----------------------------------------------
 
-SLUTPUNKTER (ENDPOINTS) --- author
 
-HÄMTA ALLA FÖRFATTARE
+## SLUTPUNKTER (ENDPOINTS) --- author
+
+### HÄMTA ALLA FÖRFATTARE
 
  URL: /api/authors
  Metod: GET
@@ -123,7 +121,7 @@ HÄMTA ALLA FÖRFATTARE
  200: Lyckad begäran. Returnerar en lista med alla författare och deras böcker.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-HÄMTA EN SPECIFIK FÖRFATTARE BASERAT PÅ ID
+### HÄMTA EN SPECIFIK FÖRFATTARE BASERAT PÅ ID
 
  URL: /api/authors/:id
  Metod: GET
@@ -135,7 +133,7 @@ HÄMTA EN SPECIFIK FÖRFATTARE BASERAT PÅ ID
  404: Författaren hittades inte.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-LÄGG TILL NY FÖRFATTARE
+### LÄGG TILL NY FÖRFATTARE
 
  URL: /api/authors
  Metod: POST
@@ -147,7 +145,7 @@ LÄGG TILL NY FÖRFATTARE
  201: Författaren har skapats framgångsrikt. Returnerar den nya författaren.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-UPPDATERA EN FÖRFATTARE
+### UPPDATERA EN FÖRFATTARE
 
  URL: /api/authors/:id
  Metod: PUT
@@ -160,7 +158,7 @@ UPPDATERA EN FÖRFATTARE
  404: Författaren hittades inte.
  500: Serverfel. Något gick fel vid hantering av förfrågan.
 
-RADERA EN FÖRFATTARE
+### RADERA EN FÖRFATTARE
 
  URL: /api/authors/:id
  Metod: DELETE
