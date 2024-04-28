@@ -14,7 +14,7 @@
 
 
 ## In Visual Studio Codes terminal
-### - run
+- run
 ```
 npm init-y
 ```
@@ -46,11 +46,11 @@ If not - add it.
 ```
 
 ## Install Express and Mongoose in Visual Studio Code
-### - run
+- run
 ```
 npm i express mongoose
 ```
-### in terminal.
+in terminal.
 
 ## Open the ”server.js” file and enter your own connection string values (username and password) to the MongoDB database.
 ### For example, my connection-string looks like this:
@@ -61,11 +61,11 @@ mongoose.connect("mongodb+srv://csnoddan:******@cluster0.nw3iadb.mongodb.net/tes
 
 
 ## Start server connection
-### When you are ready to start, please run
+When you are ready to start, please run
 ```
 node server.js
 ```
-### in terminal.
+in terminal.
 
 
 ## Seed database
@@ -74,17 +74,18 @@ To use Faker.js in your project, install by run
 ```
 npm install @faker-js/faker
 ```
-### in terminal.
+in terminal.
 
-### To seed the database with dummydata please run
+### To seed the database with dummydata
+Please run
 ```
 node seedDB.js
 ```
-### in terminal.
-### Also here you need to enter your own connection string.
+in terminal.
+#### Also here you need to enter your own connection string.
 
 
 ### Link to my Postman workspace
 – [Postman](https://www.postman.com/noddan84/workspace/pvt23kimnordin)
 
-#### .: Developed and created by Noddan84 | Kim Nordin PVT23 :.
+#### .: Developed and created by Noddan84 | Kim Nordin PVT23 | April, 2024 :.
