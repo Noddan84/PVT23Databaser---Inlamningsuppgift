@@ -79,3 +79,5 @@ node seedDB.js
 
 ### Link to my Postman workspace
 – [Postman](https://www.postman.com/noddan84/workspace/pvt23kimnordin)
+
+#### .: Developed and created by Noddan84 | Kim Nordin PVT23 :.
