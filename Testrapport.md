@@ -1,8 +1,8 @@
-----------------------------------
-.: T E S T R A P P O R T :.
-----------------------------------
+# ----------------------------------
+# .: T E S T R A P P O R T :.
+# ----------------------------------
 
-- INTRODUKTION - 
+## - INTRODUKTION - 
 
 Syftet med testerna är att testa ett fullt fungerande API,
 både manuellt och automatiskt med Mongo DB Atlas.
@@ -14,7 +14,7 @@ Populering av databasen sker med hjälp av Faker.js som
 är ett JavaScript-bibliotek som används för att generera
 stora mängder dummydata.
 
-- TESTMÅL - 
+## - TESTMÅL - 
 
 Skriv fullt fungerande kod i Visual Studio Code.
 
@@ -33,7 +33,7 @@ för att använda sig av testerna.
 
 Manuella samt automatiska tester i Postman.
 
-- TESTPLAN - 
+## - TESTPLAN - 
 
 Val av API tema.
 
@@ -55,30 +55,33 @@ och README.md samt lägga till information.
 
 Fixa en länk till min Postman-collection.
 
-- TESTER -
+## - TESTER -
 
 Korrekt statuskoder för samtliga tester.
 
-CRUD API:er för både 
-books och authors.
+### CRUD API:er
+För både books och authors.
 För att se till så att enklare API:er
 fungerar i samband med VSC-kod och Mongo DB Atlas.
 (GET, POST, PUT och DELETE)
 Se till så det är rätt användning av varje specifikt
 ID för books och authors.
 
-Get-request för att hitta bok baserat på titel.
+### Get-request för att hitta bok baserat på titel.
 Efter POST-request av både author och book
 med exempelvis "Российская Федерация###" som titel
 kunde jag testa så API:et hanterar specialtecken och
 icke-engelsk text. 
+Se till så det är rätt användning av varje specifikt
+ID för books och authors.
 
+### API expected data format
 API som kontrollerar att API:et returnerar
 förväntat data format (application/json).
 Detta görs genom pm-response av att header är
 "Content-Type".
 
-Ett API som testar pagination.
+### Ett API som testar pagination.
 Val av sidnummer. Om sidnummer inte specificeras så är standardvalet 1.
 Val av antal böcker att hämta per sida. Standardval är 10.
 Sorteringsfält där "_id" är satt som standard.
@@ -89,21 +92,23 @@ och limit av antal böcker per sida.
 Beräkning av antal böcker att hoppa över baserat på sidnummer och
 limit av antal böcker per sida.
 
-API som testar hantering av flera samtidiga användare.
+### API som testar hantering av flera samtidiga användare.
 Genom att loopa igenom antalet förfrågningar för att hämta
 både böcker och författare så testar vi förväntade responser
 för att säkerställa flera samtidiga förfrågningar.
 Ändra värdet på "numberOfRequests" efter eget tycke.
 
+### Belastningstest - Manuellt
 Manuellt belastningstest för att utvärdera prestanda
 med flera samtidiga förfrågningar.
 Antalet iterationer och fördefinierad gräns kan
 ändras efter eget tycke.
+### Obs!
 Resultatet kan variera beroende på datorns prestanda, uppkoppling
 och om du har flera program igång samtidigt samt om
 datatrafiken är hög.
 
-Databasanslutningstest genom pre-request script.
+### Databasanslutningstest genom pre-request script.
 Genom att kontrollchecka ifall miljövariabeln är
 inställd på "disconnected" så skall det skicka tillbaka felstatuskod.
 Exempelvis kan det stå "Error: connect ECONNREFUSED 127.0.0.1:3333"
