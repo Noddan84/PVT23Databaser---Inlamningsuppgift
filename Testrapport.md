@@ -108,9 +108,18 @@ Resultatet kan variera beroende på datorns prestanda, uppkoppling
 och om du har flera program igång samtidigt samt om
 datatrafiken är hög.
 
-### Databasanslutningstest genom pre-request script.
-Genom att kontrollchecka ifall miljövariabeln är
-inställd på "disconnected" så skall det skicka tillbaka felstatuskod.
-Exempelvis kan det stå "Error: connect ECONNREFUSED 127.0.0.1:3333"
-om man inte är ansluten till databasen.
-Annars ska det returnera att anslutningen är OK i Postmans console.
+### Belastningstest - Automatiskt
+Automatiskt belastningstest för att utvärdera prestanda
+med flera samtidiga förfrågningar.
+Genom att köra run folder "Load-test" när du högerklickar på mappen
+så kan du bocka i dem.
+Antalet iterationer och fördefinierad gräns kan
+ändras efter eget tycke.
+Du kan i performance simulera antalet användare (virtual users) och även
+hur testerna körs t ex: fixed, ramp-up, spike och peak
+samt hur länge testet ska pågå. Minst 1 min.
+
+### Databasanslutningstest
+Skickar en förfrågan till den angivna URL:en och verifierar om statuskoden i responsen är 200.
+Ändra URL:en i testkoden efter eget tycke.
+Om något fel uppstår under förfrågan, markeras testet som misslyckat och ett felmeddelande visas.
