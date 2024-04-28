@@ -19,9 +19,39 @@ Open it as a new project in Visual Studio Code.
 ###
 
 ###
-In Visual Studio Codes terminal run npm init-y
+In Visual Studio Codes terminal - run
+```
+npm init-y
+```
 This will create a ”package.json”-file. Check if ”type”: ”module” is added in this file.
 If not - add it.
+
+#
+This is how my package.json-file looks like:
+```
+{
+  "name": "databaser",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.3.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
+}
+```
+#
+
 ###
 
 ###
