@@ -69,6 +69,13 @@ node server.js
 
 
 ## Seed database
+### Install Faker
+To use Faker.js in your project, install by run
+```
+npm install @faker-js/faker
+```
+### in terminal.
+
 ### To seed the database with dummydata please run
 ```
 node seedDB.js
