@@ -63,6 +63,9 @@ CRUD API:er för både
 books och authors.
 För att se till så att enklare API:er
 fungerar i samband med VSC-kod och Mongo DB Atlas.
+(GET, POST, PUT och DELETE)
+Se till så det är rätt användning av varje specifikt
+ID för books och authors.
 
 Get-request för att hitta bok baserat på titel.
 Efter POST-request av både author och book
