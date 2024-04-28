@@ -54,9 +54,9 @@ This is how my package.json-file looks like:
 ##
 Install Express and Mongoose in Visual Studio Code by running
 ```
-npm i express mongoose in terminal.
+npm i express mongoose
 ```
-
+in terminal.
 
 ##
 Open the ”server.js” file and enter your own connection string values (username and password) to the MongoDB database.
