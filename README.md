@@ -61,7 +61,7 @@ mongoose.connect("mongodb+srv://csnoddan:******@cluster0.nw3iadb.mongodb.net/tes
 
 
 ## Start server connection
-When you are ready to start, please run
+- When you are ready to start, please run
 ```
 node server.js
 ```
@@ -70,14 +70,14 @@ in terminal.
 
 ## Seed database
 ### Install Faker
-To use Faker.js in your project, install by run
+- To use Faker.js in your project, install by run
 ```
 npm install @faker-js/faker
 ```
 in terminal.
 
 ### To seed the database with dummydata
-Please run
+- Please run
 ```
 node seedDB.js
 ```
@@ -89,3 +89,4 @@ in terminal.
 – [Postman](https://www.postman.com/noddan84/workspace/pvt23kimnordin)
 
 #### .: Developed and created by Noddan84 | Kim Nordin PVT23 | April, 2024 :.
+- .: Contact info - kim.nordin@student.kyh.se :.
