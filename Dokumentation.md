@@ -14,25 +14,25 @@
 
 ### HÄMTA ALLA BÖCKER
 
- URL: /api/books/all
- Metod: GET
- Beskrivning: Hämtar alla böcker från databasen tillsammans med information om författaren.
- Parametrar: Inga
- Svarskoder:
- 200: Lyckad begäran. Returnerar en lista med alla böcker.
- 500: Serverfel. Något gick fel vid hantering av förfrågan.
+- URL: /api/books/all
+- Metod: GET
+- Beskrivning: Hämtar alla böcker från databasen tillsammans med information om författaren.
+- Parametrar: Inga
+- Svarskoder:
+- 200: Lyckad begäran. Returnerar en lista med alla böcker.
+- 500: Serverfel. Något gick fel vid hantering av förfrågan.
 
 ### HÄMTA EN SPECIFIK BOK BASERAT PÅ ID
 
- URL: /api/books/:id
- Metod: GET
- Beskrivning: Hämtar en specifik bok från databasen baserat på dess ID.
- Parametrar:
- id (obligatorisk): ID för den önskade boken.
- Svarskoder:
- 200: Lyckad begäran. Returnerar boken med angivet ID.
- 404: Boken hittades inte.
- 500: Serverfel. Något gick fel vid hantering av förfrågan.
+- URL: /api/books/:id
+- Metod: GET
+- Beskrivning: Hämtar en specifik bok från databasen baserat på dess ID.
+- Parametrar:
+- id (obligatorisk): ID för den önskade boken.
+- Svarskoder:
+- 200: Lyckad begäran. Returnerar boken med angivet ID.
+- 404: Boken hittades inte.
+- 500: Serverfel. Något gick fel vid hantering av förfrågan.
 
 ### SKAPA EN NY BOK
 
