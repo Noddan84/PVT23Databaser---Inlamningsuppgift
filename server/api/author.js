@@ -3,7 +3,7 @@ import Author from "../model/author1.js";
 
 export default function (server, mongoose) {
  
-
+  
   // GET route för att hämta författare
   server.get('/api/authors', async (req, res) => {
     try {
@@ -23,7 +23,7 @@ export default function (server, mongoose) {
       }
       res.json(author);
     } catch (error) {
-      res.status(500).json({ message: "Ett fel uppstod på servern vid hämtning av en författare." });
+      res.status(400).json({ error: 'Bad Request: Invalid endpoint' });
     }
   });
 
@@ -77,5 +77,17 @@ export default function (server, mongoose) {
       res.status(500).json({ message: "Ett fel inträffade", error });
     }
   });
-
+  //Senaste författaren via GET
+  server.get('/api/authors-latest', async (req, res) => {
+    try {
+      const latestAuthor = await Author.findOne().sort({ _id: -1 });
+      if (!latestAuthor) {
+        return res.status(404).json({ message: 'Ingen författare hittades' });
+      }
+      res.json(latestAuthor);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Ett fel uppstod på servern vid hämtning av senaste författaren.' });
+    }
+  });
 };

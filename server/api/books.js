@@ -2,7 +2,7 @@ import Book from "../model/books1.js";
 
 export default function (server, mongoose) {  
   
-
+  
   // Express route för att hämta böcker med författare
   server.get('/api/books/all', async (req, res) => {
     try {
@@ -23,7 +23,7 @@ export default function (server, mongoose) {
       }
       res.json(book);
     } catch (error) {
-      res.status(500).json({ message: "Ett fel uppstod på servern vid hämtning av en bok." });
+      res.status(400).json({ error: 'Bad Request: Invalid endpoint' });
     }
   });
 
@@ -60,9 +60,7 @@ export default function (server, mongoose) {
       const deletedBook = await Book.findByIdAndDelete(req.params.id);
       if (!deletedBook) {
         return res.status(404).json({ message: "Boken hittades inte" });
-      }
-      
-      await deletedBook.populate('author').execPopulate();
+      }      
       res.json({ message: "Boken har raderats!", deletedBook });
     } catch (error) {
       console.error(error);
@@ -112,6 +110,20 @@ export default function (server, mongoose) {
       res.status(200).json(books);
     } catch (error) {
       res.status(500).json({ message: "Ett fel inträffade", error });
+    }
+  });
+
+  //Senaste boken via GET
+  server.get('/api/books-latest', async (req, res) => {
+    try {
+      const latestBook = await Book.findOne().sort({ _id: -1 });
+      if (!latestBook) {
+        return res.status(404).json({ message: 'Ingen bok hittades' });
+      }
+      res.json(latestBook);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Ett fel uppstod på servern vid hämtning av senaste boken.' });
     }
   });
 };
