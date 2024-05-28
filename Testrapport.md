@@ -322,153 +322,135 @@ Testerna visar statuskod 400.
 ### 4. Create an automated test that sends a request with specific filters or search criteria and checks if the API returns the correct data.
 
 MOTIVERING:
+Skapa ett test som kollar specifikt filter eller sökkriterier och kolla om testet visar korrekt data.
 
 TESTPROCESS:
+Via kontroll av senaste bok/författar-id:t och dess properties samt att objektets innehåll innehåller
+värden kan testet kontrollera objektets typ och "form" är korrekt. 
 
 FÖRVÄNTNING:
+Att varje pm.test passerar och visar rätt statuskod av 200. 
 
 RESULTAT:
+Att varje pm.test passerar och visar rätt statuskod av 200.
 
 ### 5. Write an automated test to verify that the API returns paginated results when a large number of records are requested.
 
 MOTIVERING:
+Automatiskt test av pagination för kontroll av stora förfrågningar.
 
 TESTPROCESS:
+Genom pm.expect(results).to.equal(resultsPerPage); kan testet kontrollera att förväntat resultat är likvärdigt med
+faktiska resultatet. Ändring av vissa parametrar behöver fortfarande dock ändå ske i VSC beroende på hur man vill 
+göra testet.
 
 FÖRVÄNTNING:
+Är koden const resultsPerPage = 10; likvärdig med const limit = parseInt(req.query.limit) || 10;
+i books.js så ska testet gå igenom och visa statuskod 200.
 
 RESULTAT:
+Resultatet speglar förväntningen.
 
 ### 6. Test if the API handles special characters and non-English text correctly in input data and returned responses using an automated testing tool.
 
 MOTIVERING:
+Automatiskt kontroll och hantering av att specialtecken och icke-engelsk text visas korrekt.
 
 TESTPROCESS:
+Liknande mitt manuella test men skillnaden är att jag genom regEx i testscript kan kontrollera att titeln
+matchar specialtecken samt kyrilliskt text.
 
 FÖRVÄNTNING:
+Testet går igenom och visar på statuskod 200. 
 
 RESULTAT:
+Testet går igenom och visar på statuskod 200.
 
 ### 7. Develop an automated test that sends concurrent requests to the API to ensure that it can handle multiple users and maintain data consistency.
 
 MOTIVERING:
+Kontroll och hantering av multipla användare för att se till så att dataflödet är jämnt och stabilt.
 
 TESTPROCESS:
+Genom att använda mig av mitt manuella test och kör "Run Folder" och sedan också välja hur många iterationer man vill göra
+så kan testet köras och eventuellt visa på en del negativa faktorer
 
 FÖRVÄNTNING:
+Testerna går igenom och visar korrekt statuskoder.
 
 RESULTAT:
+Testerna går igenom och visar korrekt statuskoder.
 
 ### 8. Create an automated test and test if the API correctly handles different HTTP methods (GET, POST, PUT, DELETE) for each endpoint and returns appropriate status codes and responses for each method.
 
 MOTIVERING:
+Automatisk kontroll av requests och endpoints.
 
 TESTPROCESS:
+CRUD API:er och test och kontroll av dessa genom att testa senaste boken.
+DELETE-requesten visar sig ha varit skiftande. Troligtvis har det något med
+ID-hantering i script att göra.
 
 FÖRVÄNTNING:
+Testerna ska gå igenom vid "Run Folder" och visa korrekt statuskod.
 
 RESULTAT:
+Sista testet med DELETE-request fungerande ej som det skulle. Troligtvis något med ID-hantering.
 
 ### 9. Write an automated test to check if the API correctly handles updates to existing records, ensuring that changes are saved and reflected in subsequent requests.
 
 MOTIVERING:
+Hantering av POST och PUT och kontroll av dessa.
 
 TESTPROCESS:
+Genom kontroll av id så kan man i PUT-requesten se ifall ändringar har skett. 
+Via miljövariabelhantering av id:t.
 
 FÖRVÄNTNING:
+Testerna går igenom och visar korrekt statuskod 200.
 
 RESULTAT:
+Testerna går igenom och visar korrekt statuskod 200.
 
 ### 10. Design an automated performance test that simulates a large number of users making requests simultaneously to check the API’s performance under heavy load
 
 MOTIVERING:
+Simulera flertal hantering för att kontrollera samtidiga förfrågningar.
 
 TESTPROCESS:
+Via egen endpoint testat flertal "användare" genom att köra "Run Folder" och valfritt antal iterationer.
 
 FÖRVÄNTNING:
+Testerna går igenom och visar korrekt statuskod 200.
 
 RESULTAT:
+Testerna går igenom och visar korrekt statuskod 200.
 
 ### 11. Create an automated test that verifies the API can recover gracefully from failures, such as database connection issues or third-party service outages, without compromising data integrity.
 
-MOTIVERING:
-
-TESTPROCESS:
-
-FÖRVÄNTNING:
-
-RESULTAT:
+- EJ HUNNIT MED - 
 
 ### 12. Develop an automated test to handle edge cases, such as requests with missing or invalid parameters, and ensure that appropriate error messages are returned.
 
 MOTIVERING:
+Test av statuskod 400 som är automatiserad.
 
 TESTPROCESS:
+pm.test("Statuscode is 400", function (){
+    pm.response.to.have.status(400);
+}); i script visar på rätt statuskod från fel url/endpoint.
 
 FÖRVÄNTNING:
+Statuskod 400.
 
 RESULTAT:
+Statuskod 400.
 
 ### 13. Write an automated test to verify that the API correctly implements any rate limiting or throttling mechanisms to prevent abuse or excessive use of resources.
 
+- EJ HUNNIT MED - 
 
 
 
 
-
-### CRUD API:er
-För både books och authors.
-För att se till så att enklare API:er
-fungerar i samband med VSC-kod och Mongo DB Atlas.
-(GET, POST, PUT och DELETE)
-Se till så det är rätt användning av varje specifikt
-ID för books och authors.
-
-### Get-request för att hitta bok baserat på titel.
-Efter POST-request av både author och book
-med exempelvis "Российская Федерация###" som titel
-kunde jag testa så API:et hanterar specialtecken och
-icke-engelsk text. 
-Se till så det är rätt användning av varje specifikt
-ID för books och authors.
-
-### API expected data format
-API som kontrollerar att API:et returnerar
-förväntat data format (application/json).
-Detta görs genom pm-response av att header är
-"Content-Type".
-
-### Ett API som testar pagination.
-
-
-### API som testar hantering av flera samtidiga användare.
-Genom att loopa igenom antalet förfrågningar för att hämta
-både böcker och författare så testar vi förväntade responser
-för att säkerställa flera samtidiga förfrågningar.
-Ändra värdet på "numberOfRequests" efter eget tycke.
-
-### Belastningstest - Manuellt
-Manuellt belastningstest för att utvärdera prestanda
-med flera samtidiga förfrågningar.
-Antalet iterationer och fördefinierad gräns kan
-ändras efter eget tycke.
-- OBS!
-Resultatet kan variera beroende på datorns prestanda, uppkoppling
-och om du har flera program igång samtidigt samt om
-datatrafiken är hög.
-
-### Belastningstest - Automatiskt
-Automatiskt belastningstest för att utvärdera prestanda
-med flera samtidiga förfrågningar.
-Genom att köra run folder "Load-test" när du högerklickar på mappen
-så kan du bocka i dem.
-Antalet iterationer och fördefinierad gräns kan
-ändras efter eget tycke.
-Du kan i performance simulera antalet användare (virtual users) och även
-hur testerna körs t ex: fixed, ramp-up, spike och peak
-samt hur länge testet ska pågå. Minst 1 min.
-
-### Databasanslutningstest
-Skickar en förfrågan till den angivna URL:en och verifierar om statuskoden i responsen är 200.
-Ändra URL:en i testkoden efter eget tycke.
-Om något fel uppstår under förfrågan, markeras testet som misslyckat och ett felmeddelande visas.
+.: Kim Nordin PVT23 Programvarutestare 2024-05-28 :.
